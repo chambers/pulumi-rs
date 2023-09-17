@@ -13,7 +13,3 @@ tonic = "0.10.0"
 
 [build-dependencies]
 tonic-build = "0.10.0"
-
-[build]
-#path to build script
-build = "build.rs"
