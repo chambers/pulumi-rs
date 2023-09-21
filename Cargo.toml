@@ -10,11 +10,9 @@ config = "0.13.3"
 env_logger = "0.10.0"
 log = "0.4.20"
 prost = "0.12.1"
-prost-types = "0.12.1"
 tonic = "0.10.0"
 
 [build-dependencies]
-color-eyre = "0.6.2"
 config = "0.13.3"
 eyre = "0.6.8"
-tonic-build = {version="0.10.0", features=["prost"]}
+tonic-build = "0.10.0"

@@ -1,24 +1,13 @@
 use eyre::Result;
 fn main() -> Result<(), eyre::Report> {
+    //convert protos to rust
     tonic_build::configure()
         .build_client(true)
         .build_server(false)
-        .compile_well_known_types(false)
-        .out_dir("src/proto/pulumi/codegen")
-        .compile(
-            &[
-                "proto/pulumi/codegen/hcl.proto",
-                "proto/pulumi/codegen/loader.proto",
-                "proto/pulumi/codegen/mapper.proto",
-            ],
-            &["proto"],
-        )?;
-
-    tonic_build::configure()
-        .build_client(true)
-        .build_server(false)
-        .compile_well_known_types(false)
-        .out_dir("src/proto/pulumi")
+        //if you don't compile well known types prost-types crate must be added
+        .compile_well_known_types(true)
+        .out_dir("src/proto/")
+        .include_file("mod.rs")
         .compile(
             &[
                 "proto/pulumi/resource.proto",
@@ -31,7 +20,11 @@ fn main() -> Result<(), eyre::Report> {
                 "proto/pulumi/language.proto",
                 "proto/pulumi/provider.proto",
                 "proto/pulumi/converter.proto",
+                "proto/pulumi/codegen/hcl.proto",
+                "proto/pulumi/codegen/loader.proto",
+                "proto/pulumi/codegen/mapper.proto",
             ],
+            //root folder for protos
             &["proto"],
         )?;
 
