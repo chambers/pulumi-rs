@@ -13,7 +13,6 @@ fn main() -> Result<(), eyre::Report> {
                 "proto/pulumi/resource.proto",
                 "proto/pulumi/alias.proto",
                 "proto/pulumi/source.proto",
-                "proto/pulumi/alias.proto",
                 "proto/pulumi/plugin.proto",
                 "proto/pulumi/errors.proto",
                 "proto/pulumi/analyzer.proto",
