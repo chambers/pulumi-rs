@@ -886,6 +886,7 @@ dependencies = [
  "eyre",
  "log",
  "prost",
+ "prost-types",
  "tonic",
  "tonic-build",
 ]

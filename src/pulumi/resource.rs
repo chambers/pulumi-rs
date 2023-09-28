@@ -81,7 +81,7 @@ pub struct ConfigureRequest {
     >,
     /// the input properties for the provider. Only filled in for newer providers.
     #[prost(message, optional, tag = "2")]
-    pub args: ::core::option::Option<super::google::protobuf::Struct>,
+    pub args: ::core::option::Option<::prost_types::Struct>,
     /// when true, operations should return secrets as strongly typed.
     #[prost(bool, tag = "3")]
     pub accept_secrets: bool,
@@ -137,14 +137,14 @@ pub struct InvokeRequest {
     pub tok: ::prost::alloc::string::String,
     /// the arguments for the function invocation.
     #[prost(message, optional, tag = "2")]
-    pub args: ::core::option::Option<super::google::protobuf::Struct>,
+    pub args: ::core::option::Option<::prost_types::Struct>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InvokeResponse {
     /// the returned values, if invoke was successful.
     #[prost(message, optional, tag = "1")]
-    pub r#return: ::core::option::Option<super::google::protobuf::Struct>,
+    pub r#return: ::core::option::Option<::prost_types::Struct>,
     /// the failures if any arguments didn't pass verification.
     #[prost(message, repeated, tag = "2")]
     pub failures: ::prost::alloc::vec::Vec<CheckFailure>,
@@ -157,7 +157,7 @@ pub struct CallRequest {
     pub tok: ::prost::alloc::string::String,
     /// the arguments for the function invocation.
     #[prost(message, optional, tag = "2")]
-    pub args: ::core::option::Option<super::google::protobuf::Struct>,
+    pub args: ::core::option::Option<::prost_types::Struct>,
     /// a map from argument keys to the dependencies of the argument.
     #[prost(map = "string, message", tag = "3")]
     pub arg_dependencies: ::std::collections::HashMap<
@@ -226,7 +226,7 @@ pub mod call_request {
 pub struct CallResponse {
     /// the returned values, if call was successful.
     #[prost(message, optional, tag = "1")]
-    pub r#return: ::core::option::Option<super::google::protobuf::Struct>,
+    pub r#return: ::core::option::Option<::prost_types::Struct>,
     /// a map from return value keys to the dependencies of the return value.
     #[prost(map = "string, message", tag = "2")]
     pub return_dependencies: ::std::collections::HashMap<
@@ -256,10 +256,10 @@ pub struct CheckRequest {
     pub urn: ::prost::alloc::string::String,
     /// the old Pulumi inputs for this resource, if any.
     #[prost(message, optional, tag = "2")]
-    pub olds: ::core::option::Option<super::google::protobuf::Struct>,
+    pub olds: ::core::option::Option<::prost_types::Struct>,
     /// the new Pulumi inputs for this resource.
     #[prost(message, optional, tag = "3")]
-    pub news: ::core::option::Option<super::google::protobuf::Struct>,
+    pub news: ::core::option::Option<::prost_types::Struct>,
     /// a deterministically random hash, primarily intended for global unique naming.
     #[prost(bytes = "vec", tag = "5")]
     pub random_seed: ::prost::alloc::vec::Vec<u8>,
@@ -269,7 +269,7 @@ pub struct CheckRequest {
 pub struct CheckResponse {
     /// the provider inputs for this resource.
     #[prost(message, optional, tag = "1")]
-    pub inputs: ::core::option::Option<super::google::protobuf::Struct>,
+    pub inputs: ::core::option::Option<::prost_types::Struct>,
     /// any validation failures that occurred.
     #[prost(message, repeated, tag = "2")]
     pub failures: ::prost::alloc::vec::Vec<CheckFailure>,
@@ -295,16 +295,16 @@ pub struct DiffRequest {
     pub urn: ::prost::alloc::string::String,
     /// the old output values of resource to diff.
     #[prost(message, optional, tag = "3")]
-    pub olds: ::core::option::Option<super::google::protobuf::Struct>,
+    pub olds: ::core::option::Option<::prost_types::Struct>,
     /// the new input values of resource to diff.
     #[prost(message, optional, tag = "4")]
-    pub news: ::core::option::Option<super::google::protobuf::Struct>,
+    pub news: ::core::option::Option<::prost_types::Struct>,
     /// a set of property paths that should be treated as unchanged.
     #[prost(string, repeated, tag = "5")]
     pub ignore_changes: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// the old input values of the resource to diff.
     #[prost(message, optional, tag = "6")]
-    pub old_inputs: ::core::option::Option<super::google::protobuf::Struct>,
+    pub old_inputs: ::core::option::Option<::prost_types::Struct>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -485,7 +485,7 @@ pub struct CreateRequest {
     pub urn: ::prost::alloc::string::String,
     /// the provider inputs to set during creation.
     #[prost(message, optional, tag = "2")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
+    pub properties: ::core::option::Option<::prost_types::Struct>,
     /// the create request timeout represented in seconds.
     #[prost(double, tag = "3")]
     pub timeout: f64,
@@ -502,7 +502,7 @@ pub struct CreateResponse {
     pub id: ::prost::alloc::string::String,
     /// any properties that were computed during creation.
     #[prost(message, optional, tag = "2")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
+    pub properties: ::core::option::Option<::prost_types::Struct>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -515,10 +515,10 @@ pub struct ReadRequest {
     pub urn: ::prost::alloc::string::String,
     /// the current state (sufficiently complete to identify the resource).
     #[prost(message, optional, tag = "3")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
+    pub properties: ::core::option::Option<::prost_types::Struct>,
     /// the current inputs, if any (only populated during refresh).
     #[prost(message, optional, tag = "4")]
-    pub inputs: ::core::option::Option<super::google::protobuf::Struct>,
+    pub inputs: ::core::option::Option<::prost_types::Struct>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -528,10 +528,10 @@ pub struct ReadResponse {
     pub id: ::prost::alloc::string::String,
     /// the state of the resource read from the live environment.
     #[prost(message, optional, tag = "2")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
+    pub properties: ::core::option::Option<::prost_types::Struct>,
     /// the inputs for this resource that would be returned from Check.
     #[prost(message, optional, tag = "3")]
-    pub inputs: ::core::option::Option<super::google::protobuf::Struct>,
+    pub inputs: ::core::option::Option<::prost_types::Struct>,
 }
 /// NOTE: The partial-update-error equivalent of this message is `ErrorResourceInitFailed`.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -545,10 +545,10 @@ pub struct UpdateRequest {
     pub urn: ::prost::alloc::string::String,
     /// the old values of provider inputs for the resource to update.
     #[prost(message, optional, tag = "3")]
-    pub olds: ::core::option::Option<super::google::protobuf::Struct>,
+    pub olds: ::core::option::Option<::prost_types::Struct>,
     /// the new values of provider inputs for the resource to update.
     #[prost(message, optional, tag = "4")]
-    pub news: ::core::option::Option<super::google::protobuf::Struct>,
+    pub news: ::core::option::Option<::prost_types::Struct>,
     /// the update request timeout represented in seconds.
     #[prost(double, tag = "5")]
     pub timeout: f64,
@@ -560,14 +560,14 @@ pub struct UpdateRequest {
     pub preview: bool,
     /// the old input values of the resource to diff.
     #[prost(message, optional, tag = "8")]
-    pub old_inputs: ::core::option::Option<super::google::protobuf::Struct>,
+    pub old_inputs: ::core::option::Option<::prost_types::Struct>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateResponse {
     /// any properties that were computed during updating.
     #[prost(message, optional, tag = "1")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
+    pub properties: ::core::option::Option<::prost_types::Struct>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -580,7 +580,7 @@ pub struct DeleteRequest {
     pub urn: ::prost::alloc::string::String,
     /// the current properties on the resource.
     #[prost(message, optional, tag = "3")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
+    pub properties: ::core::option::Option<::prost_types::Struct>,
     /// the delete request timeout represented in seconds.
     #[prost(double, tag = "4")]
     pub timeout: f64,
@@ -620,7 +620,7 @@ pub struct ConstructRequest {
     pub parent: ::prost::alloc::string::String,
     /// the inputs to the resource constructor.
     #[prost(message, optional, tag = "10")]
-    pub inputs: ::core::option::Option<super::google::protobuf::Struct>,
+    pub inputs: ::core::option::Option<::prost_types::Struct>,
     /// a map from property keys to the dependencies of the property.
     #[prost(map = "string, message", tag = "11")]
     pub input_dependencies: ::std::collections::HashMap<
@@ -721,7 +721,7 @@ pub struct ConstructResponse {
     pub urn: ::prost::alloc::string::String,
     /// any properties that were computed during construction.
     #[prost(message, optional, tag = "2")]
-    pub state: ::core::option::Option<super::google::protobuf::Struct>,
+    pub state: ::core::option::Option<::prost_types::Struct>,
     /// a map from property keys to the dependencies of the property.
     #[prost(map = "string, message", tag = "3")]
     pub state_dependencies: ::std::collections::HashMap<
@@ -750,13 +750,13 @@ pub struct ErrorResourceInitFailed {
     pub id: ::prost::alloc::string::String,
     /// any properties that were computed during updating.
     #[prost(message, optional, tag = "2")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
+    pub properties: ::core::option::Option<::prost_types::Struct>,
     /// error messages associated with initialization failure.
     #[prost(string, repeated, tag = "3")]
     pub reasons: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// the current inputs to this resource (only applicable for Read)
     #[prost(message, optional, tag = "4")]
-    pub inputs: ::core::option::Option<super::google::protobuf::Struct>,
+    pub inputs: ::core::option::Option<::prost_types::Struct>,
 }
 /// GetMappingRequest allows providers to return ecosystem specific information to allow the provider to be
 /// converted from a source markup to Pulumi. It's expected that provider bridges that target a given ecosystem
@@ -1164,10 +1164,7 @@ pub mod resource_provider_client {
         pub async fn delete(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::super::google::protobuf::Empty>,
-            tonic::Status,
-        > {
+        ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
             self.inner
                 .ready()
                 .await
@@ -1219,11 +1216,8 @@ pub mod resource_provider_client {
         /// hard-closing any gRPC connection.
         pub async fn cancel(
             &mut self,
-            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<
-            tonic::Response<super::super::google::protobuf::Empty>,
-            tonic::Status,
-        > {
+            request: impl tonic::IntoRequest<()>,
+        ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
             self.inner
                 .ready()
                 .await
@@ -1245,7 +1239,7 @@ pub mod resource_provider_client {
         /// GetPluginInfo returns generic information about this plugin, like its version.
         pub async fn get_plugin_info(
             &mut self,
-            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
+            request: impl tonic::IntoRequest<()>,
         ) -> std::result::Result<tonic::Response<super::PluginInfo>, tonic::Status> {
             self.inner
                 .ready()
@@ -1269,10 +1263,7 @@ pub mod resource_provider_client {
         pub async fn attach(
             &mut self,
             request: impl tonic::IntoRequest<super::PluginAttach>,
-        ) -> std::result::Result<
-            tonic::Response<super::super::google::protobuf::Empty>,
-            tonic::Status,
-        > {
+        ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
             self.inner
                 .ready()
                 .await
@@ -1406,7 +1397,7 @@ pub struct ReadResourceRequest {
     pub parent: ::prost::alloc::string::String,
     /// optional state sufficient to uniquely identify the resource.
     #[prost(message, optional, tag = "5")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
+    pub properties: ::core::option::Option<::prost_types::Struct>,
     /// a list of URNs that this read depends on, as observed by the language host.
     #[prost(string, repeated, tag = "6")]
     pub dependencies: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -1449,7 +1440,7 @@ pub struct ReadResourceResponse {
     pub urn: ::prost::alloc::string::String,
     /// the state of the resource read from the live environment.
     #[prost(message, optional, tag = "2")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
+    pub properties: ::core::option::Option<::prost_types::Struct>,
 }
 /// RegisterResourceRequest contains information about a resource object that was newly allocated.
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -1469,7 +1460,7 @@ pub struct RegisterResourceRequest {
     pub custom: bool,
     /// an object produced by the interpreter/source.
     #[prost(message, optional, tag = "5")]
-    pub object: ::core::option::Option<super::google::protobuf::Struct>,
+    pub object: ::core::option::Option<::prost_types::Struct>,
     /// true if the resource should be marked protected.
     #[prost(bool, tag = "6")]
     pub protect: bool,
@@ -1603,7 +1594,7 @@ pub struct RegisterResourceResponse {
     pub id: ::prost::alloc::string::String,
     /// the resulting object properties, including provider defaults.
     #[prost(message, optional, tag = "3")]
-    pub object: ::core::option::Option<super::google::protobuf::Struct>,
+    pub object: ::core::option::Option<::prost_types::Struct>,
     /// if true, the object's state is stable and may be trusted not to change.
     #[prost(bool, tag = "4")]
     pub stable: bool,
@@ -1637,7 +1628,7 @@ pub struct RegisterResourceOutputsRequest {
     pub urn: ::prost::alloc::string::String,
     /// additional output properties to add to the existing resource.
     #[prost(message, optional, tag = "2")]
-    pub outputs: ::core::option::Option<super::google::protobuf::Struct>,
+    pub outputs: ::core::option::Option<::prost_types::Struct>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -1647,7 +1638,7 @@ pub struct ResourceInvokeRequest {
     pub tok: ::prost::alloc::string::String,
     /// the arguments for the function invocation.
     #[prost(message, optional, tag = "2")]
-    pub args: ::core::option::Option<super::google::protobuf::Struct>,
+    pub args: ::core::option::Option<::prost_types::Struct>,
     /// an optional reference to the provider version to use for this invoke.
     #[prost(string, tag = "3")]
     pub provider: ::prost::alloc::string::String,
@@ -1905,10 +1896,7 @@ pub mod resource_monitor_client {
         pub async fn register_resource_outputs(
             &mut self,
             request: impl tonic::IntoRequest<super::RegisterResourceOutputsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::super::google::protobuf::Empty>,
-            tonic::Status,
-        > {
+        ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
             self.inner
                 .ready()
                 .await
@@ -1930,1379 +1918,6 @@ pub mod resource_monitor_client {
                         "RegisterResourceOutputs",
                     ),
                 );
-            self.inner.unary(req, path, codec).await
-        }
-    }
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ErrorCause {
-    #[prost(string, tag = "1")]
-    pub message: ::prost::alloc::string::String,
-    #[prost(string, tag = "2")]
-    pub stack_trace: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AnalyzeRequest {
-    /// the type token of the resource.
-    #[prost(string, tag = "1")]
-    pub r#type: ::prost::alloc::string::String,
-    /// the full properties to use for validation.
-    #[prost(message, optional, tag = "2")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
-    /// the URN of the resource.
-    #[prost(string, tag = "3")]
-    pub urn: ::prost::alloc::string::String,
-    /// the name for the resource's URN.
-    #[prost(string, tag = "4")]
-    pub name: ::prost::alloc::string::String,
-    /// the resource options.
-    #[prost(message, optional, tag = "5")]
-    pub options: ::core::option::Option<AnalyzerResourceOptions>,
-    /// the resource's provider.
-    #[prost(message, optional, tag = "6")]
-    pub provider: ::core::option::Option<AnalyzerProviderResource>,
-}
-/// AnalyzerResource defines the view of a Pulumi-managed resource as sent to Analyzers. The properties
-/// of the resource are specific to the type of analysis being performed. See the Analyzer
-/// service definition for more information.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AnalyzerResource {
-    /// the type token of the resource.
-    #[prost(string, tag = "1")]
-    pub r#type: ::prost::alloc::string::String,
-    /// the full properties to use for validation.
-    #[prost(message, optional, tag = "2")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
-    /// the URN of the resource.
-    #[prost(string, tag = "3")]
-    pub urn: ::prost::alloc::string::String,
-    /// the name for the resource's URN.
-    #[prost(string, tag = "4")]
-    pub name: ::prost::alloc::string::String,
-    /// the resource options.
-    #[prost(message, optional, tag = "5")]
-    pub options: ::core::option::Option<AnalyzerResourceOptions>,
-    /// the resource's provider.
-    #[prost(message, optional, tag = "6")]
-    pub provider: ::core::option::Option<AnalyzerProviderResource>,
-    /// an optional parent URN that this child resource belongs to.
-    #[prost(string, tag = "7")]
-    pub parent: ::prost::alloc::string::String,
-    /// a list of URNs that this resource depends on.
-    #[prost(string, repeated, tag = "8")]
-    pub dependencies: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// a map from property keys to the dependencies of the property.
-    #[prost(map = "string, message", tag = "9")]
-    pub property_dependencies: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        AnalyzerPropertyDependencies,
-    >,
-}
-/// AnalyzerResourceOptions defines the options associated with a resource.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AnalyzerResourceOptions {
-    /// true if the resource should be marked protected.
-    #[prost(bool, tag = "1")]
-    pub protect: bool,
-    /// a list of property names to ignore during changes.
-    #[prost(string, repeated, tag = "2")]
-    pub ignore_changes: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// true if this resource should be deleted before replacement.
-    #[prost(bool, tag = "3")]
-    pub delete_before_replace: bool,
-    /// true if the deleteBeforeReplace property should be treated as defined even if it is false.
-    #[prost(bool, tag = "4")]
-    pub delete_before_replace_defined: bool,
-    /// a list of output properties that should also be treated as secret, in addition to ones we detect.
-    #[prost(string, repeated, tag = "5")]
-    pub additional_secret_outputs: ::prost::alloc::vec::Vec<
-        ::prost::alloc::string::String,
-    >,
-    /// a list of additional URNs that shoud be considered the same.
-    #[prost(string, repeated, tag = "6")]
-    pub aliases: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// a config block that will be used to configure timeouts for CRUD operations.
-    #[prost(message, optional, tag = "7")]
-    pub custom_timeouts: ::core::option::Option<
-        analyzer_resource_options::CustomTimeouts,
-    >,
-}
-/// Nested message and enum types in `AnalyzerResourceOptions`.
-pub mod analyzer_resource_options {
-    /// CustomTimeouts allows a user to be able to create a set of custom timeout parameters.
-    #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, PartialEq, ::prost::Message)]
-    pub struct CustomTimeouts {
-        /// The create resource timeout in seconds.
-        #[prost(double, tag = "1")]
-        pub create: f64,
-        /// The update resource timeout in seconds.
-        #[prost(double, tag = "2")]
-        pub update: f64,
-        /// The delete resource timeout in seconds.
-        #[prost(double, tag = "3")]
-        pub delete: f64,
-    }
-}
-/// AnalyzerProviderResource provides information about a resource's provider.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AnalyzerProviderResource {
-    /// the type token of the resource.
-    #[prost(string, tag = "1")]
-    pub r#type: ::prost::alloc::string::String,
-    /// the full properties to use for validation.
-    #[prost(message, optional, tag = "2")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
-    /// the URN of the resource.
-    #[prost(string, tag = "3")]
-    pub urn: ::prost::alloc::string::String,
-    /// the name for the resource's URN.
-    #[prost(string, tag = "4")]
-    pub name: ::prost::alloc::string::String,
-}
-/// AnalyzerPropertyDependencies describes the resources that a particular property depends on.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AnalyzerPropertyDependencies {
-    /// A list of URNs this property depends on.
-    #[prost(string, repeated, tag = "1")]
-    pub urns: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AnalyzeStackRequest {
-    #[prost(message, repeated, tag = "1")]
-    pub resources: ::prost::alloc::vec::Vec<AnalyzerResource>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AnalyzeResponse {
-    /// information about policy violations.
-    #[prost(message, repeated, tag = "2")]
-    pub diagnostics: ::prost::alloc::vec::Vec<AnalyzeDiagnostic>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AnalyzeDiagnostic {
-    /// Name of the violated policy.
-    #[prost(string, tag = "1")]
-    pub policy_name: ::prost::alloc::string::String,
-    /// Name of the policy pack the policy is in.
-    #[prost(string, tag = "2")]
-    pub policy_pack_name: ::prost::alloc::string::String,
-    /// Version of the policy pack.
-    #[prost(string, tag = "3")]
-    pub policy_pack_version: ::prost::alloc::string::String,
-    /// Description of policy rule. e.g., "encryption enabled."
-    #[prost(string, tag = "4")]
-    pub description: ::prost::alloc::string::String,
-    /// Message to display on policy violation, e.g., remediation steps.
-    #[prost(string, tag = "5")]
-    pub message: ::prost::alloc::string::String,
-    /// Keywords/terms to associate with a policy, e.g., "cost".
-    #[prost(string, repeated, tag = "6")]
-    pub tags: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// Severity of the policy violation.
-    #[prost(enumeration = "EnforcementLevel", tag = "7")]
-    pub enforcement_level: i32,
-    /// URN of the resource that violates the policy.
-    #[prost(string, tag = "8")]
-    pub urn: ::prost::alloc::string::String,
-}
-/// AnalyzerInfo provides metadata about a PolicyPack inside an analyzer.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AnalyzerInfo {
-    /// Name of the PolicyPack.
-    #[prost(string, tag = "1")]
-    pub name: ::prost::alloc::string::String,
-    /// Pretty name for the PolicyPack.
-    #[prost(string, tag = "2")]
-    pub display_name: ::prost::alloc::string::String,
-    /// Metadata about policies contained in PolicyPack.
-    #[prost(message, repeated, tag = "3")]
-    pub policies: ::prost::alloc::vec::Vec<PolicyInfo>,
-    /// Version of the Policy Pack.
-    #[prost(string, tag = "4")]
-    pub version: ::prost::alloc::string::String,
-    /// Whether the Policy Pack supports config.
-    #[prost(bool, tag = "5")]
-    pub supports_config: bool,
-    /// Map of policy name to config.
-    #[prost(map = "string, message", tag = "6")]
-    pub initial_config: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        PolicyConfig,
-    >,
-}
-/// PolicyInfo provides metadata about a policy within a Policy Pack.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct PolicyInfo {
-    /// Name of the policy.
-    #[prost(string, tag = "1")]
-    pub name: ::prost::alloc::string::String,
-    /// Pretty name for the policy.
-    #[prost(string, tag = "2")]
-    pub display_name: ::prost::alloc::string::String,
-    /// Description of policy rule. e.g., "encryption enabled."
-    #[prost(string, tag = "3")]
-    pub description: ::prost::alloc::string::String,
-    /// Message to display on policy violation, e.g., remediation steps.
-    #[prost(string, tag = "4")]
-    pub message: ::prost::alloc::string::String,
-    /// Severity of the policy violation.
-    #[prost(enumeration = "EnforcementLevel", tag = "5")]
-    pub enforcement_level: i32,
-    /// Config schema for the policy.
-    #[prost(message, optional, tag = "6")]
-    pub config_schema: ::core::option::Option<PolicyConfigSchema>,
-}
-/// PolicyConfigSchema provides the schema for a policy's configuration.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct PolicyConfigSchema {
-    /// JSON schema for each property.
-    #[prost(message, optional, tag = "1")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
-    /// Required properties.
-    #[prost(string, repeated, tag = "2")]
-    pub required: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-}
-/// PolicyConfig provides configuration for a policy.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct PolicyConfig {
-    /// Enforcement level of the policy.
-    #[prost(enumeration = "EnforcementLevel", tag = "1")]
-    pub enforcement_level: i32,
-    /// Configuration properties of the policy.
-    #[prost(message, optional, tag = "2")]
-    pub properties: ::core::option::Option<super::google::protobuf::Struct>,
-}
-/// ConfigureAnalyzerRequest provides configuration information to the analyzer.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ConfigureAnalyzerRequest {
-    /// Map of policy name to config.
-    #[prost(map = "string, message", tag = "1")]
-    pub policy_config: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        PolicyConfig,
-    >,
-}
-/// EnforcementLevel indicates the severity of a policy violation.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
-#[repr(i32)]
-pub enum EnforcementLevel {
-    /// Displayed to users, but does not block deployment.
-    Advisory = 0,
-    /// Stops deployment, cannot be overridden.
-    Mandatory = 1,
-    /// Disabled policies do not run during a deployment.
-    Disabled = 2,
-}
-impl EnforcementLevel {
-    /// String value of the enum field names used in the ProtoBuf definition.
-    ///
-    /// The values are not transformed in any way and thus are considered stable
-    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
-    pub fn as_str_name(&self) -> &'static str {
-        match self {
-            EnforcementLevel::Advisory => "ADVISORY",
-            EnforcementLevel::Mandatory => "MANDATORY",
-            EnforcementLevel::Disabled => "DISABLED",
-        }
-    }
-    /// Creates an enum from field names used in the ProtoBuf definition.
-    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
-        match value {
-            "ADVISORY" => Some(Self::Advisory),
-            "MANDATORY" => Some(Self::Mandatory),
-            "DISABLED" => Some(Self::Disabled),
-            _ => None,
-        }
-    }
-}
-/// Generated client implementations.
-pub mod analyzer_client {
-    #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
-    use tonic::codegen::http::Uri;
-    /// Analyzer provides a pluggable interface for checking resource definitions against some number of
-    /// resource policies. It is intentionally open-ended, allowing for implementations that check
-    /// everything from raw resource definitions to entire projects/stacks/snapshots for arbitrary
-    /// issues -- style, policy, correctness, security, and so on.
-    #[derive(Debug, Clone)]
-    pub struct AnalyzerClient<T> {
-        inner: tonic::client::Grpc<T>,
-    }
-    impl AnalyzerClient<tonic::transport::Channel> {
-        /// Attempt to create a new client by connecting to a given endpoint.
-        pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
-        where
-            D: TryInto<tonic::transport::Endpoint>,
-            D::Error: Into<StdError>,
-        {
-            let conn = tonic::transport::Endpoint::new(dst)?.connect().await?;
-            Ok(Self::new(conn))
-        }
-    }
-    impl<T> AnalyzerClient<T>
-    where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
-        T::Error: Into<StdError>,
-        T::ResponseBody: Body<Data = Bytes> + Send + 'static,
-        <T::ResponseBody as Body>::Error: Into<StdError> + Send,
-    {
-        pub fn new(inner: T) -> Self {
-            let inner = tonic::client::Grpc::new(inner);
-            Self { inner }
-        }
-        pub fn with_origin(inner: T, origin: Uri) -> Self {
-            let inner = tonic::client::Grpc::with_origin(inner, origin);
-            Self { inner }
-        }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> AnalyzerClient<InterceptedService<T, F>>
-        where
-            F: tonic::service::Interceptor,
-            T::ResponseBody: Default,
-            T: tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
-            >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
-        {
-            AnalyzerClient::new(InterceptedService::new(inner, interceptor))
-        }
-        /// Compress requests with the given encoding.
-        ///
-        /// This requires the server to support it otherwise it might respond with an
-        /// error.
-        #[must_use]
-        pub fn send_compressed(mut self, encoding: CompressionEncoding) -> Self {
-            self.inner = self.inner.send_compressed(encoding);
-            self
-        }
-        /// Enable decompressing responses.
-        #[must_use]
-        pub fn accept_compressed(mut self, encoding: CompressionEncoding) -> Self {
-            self.inner = self.inner.accept_compressed(encoding);
-            self
-        }
-        /// Limits the maximum size of a decoded message.
-        ///
-        /// Default: `4MB`
-        #[must_use]
-        pub fn max_decoding_message_size(mut self, limit: usize) -> Self {
-            self.inner = self.inner.max_decoding_message_size(limit);
-            self
-        }
-        /// Limits the maximum size of an encoded message.
-        ///
-        /// Default: `usize::MAX`
-        #[must_use]
-        pub fn max_encoding_message_size(mut self, limit: usize) -> Self {
-            self.inner = self.inner.max_encoding_message_size(limit);
-            self
-        }
-        /// Analyze analyzes a single resource object, and returns any errors that it finds.
-        /// Called with the "inputs" to the resource, before it is updated.
-        pub async fn analyze(
-            &mut self,
-            request: impl tonic::IntoRequest<super::AnalyzeRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::AnalyzeResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.Analyzer/Analyze",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.Analyzer", "Analyze"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// AnalyzeStack analyzes all resources within a stack, at the end of a successful
-        /// preview or update. The provided resources are the "outputs", after any mutations
-        /// have taken place.
-        pub async fn analyze_stack(
-            &mut self,
-            request: impl tonic::IntoRequest<super::AnalyzeStackRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::AnalyzeResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.Analyzer/AnalyzeStack",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.Analyzer", "AnalyzeStack"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// GetAnalyzerInfo returns metadata about the analyzer (e.g., list of policies contained).
-        pub async fn get_analyzer_info(
-            &mut self,
-            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<tonic::Response<super::AnalyzerInfo>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.Analyzer/GetAnalyzerInfo",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.Analyzer", "GetAnalyzerInfo"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// GetPluginInfo returns generic information about this plugin, like its version.
-        pub async fn get_plugin_info(
-            &mut self,
-            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<tonic::Response<super::PluginInfo>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.Analyzer/GetPluginInfo",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.Analyzer", "GetPluginInfo"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// Configure configures the analyzer, passing configuration properties for each policy.
-        pub async fn configure(
-            &mut self,
-            request: impl tonic::IntoRequest<super::ConfigureAnalyzerRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::super::google::protobuf::Empty>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.Analyzer/Configure",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.Analyzer", "Configure"));
-            self.inner.unary(req, path, codec).await
-        }
-    }
-}
-/// AboutResponse returns runtime information about the language.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AboutResponse {
-    /// the primary executable for the runtime of this language.
-    #[prost(string, tag = "1")]
-    pub executable: ::prost::alloc::string::String,
-    /// the version of the runtime for this language.
-    #[prost(string, tag = "2")]
-    pub version: ::prost::alloc::string::String,
-    /// other information about this language.
-    #[prost(map = "string, string", tag = "3")]
-    pub metadata: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::string::String,
-    >,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetProgramDependenciesRequest {
-    /// the project name.
-    #[prost(string, tag = "1")]
-    pub project: ::prost::alloc::string::String,
-    /// the program's working directory.
-    #[prost(string, tag = "2")]
-    pub pwd: ::prost::alloc::string::String,
-    /// the path to the program.
-    #[prost(string, tag = "3")]
-    pub program: ::prost::alloc::string::String,
-    /// if transitive dependencies should be included in the result.
-    #[prost(bool, tag = "4")]
-    pub transitive_dependencies: bool,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct DependencyInfo {
-    /// The name of the dependency.
-    #[prost(string, tag = "1")]
-    pub name: ::prost::alloc::string::String,
-    /// The version of the dependency.
-    #[prost(string, tag = "2")]
-    pub version: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetProgramDependenciesResponse {
-    /// the dependencies of this program
-    #[prost(message, repeated, tag = "1")]
-    pub dependencies: ::prost::alloc::vec::Vec<DependencyInfo>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetRequiredPluginsRequest {
-    /// the project name.
-    #[prost(string, tag = "1")]
-    pub project: ::prost::alloc::string::String,
-    /// the program's working directory.
-    #[prost(string, tag = "2")]
-    pub pwd: ::prost::alloc::string::String,
-    /// the path to the program.
-    #[prost(string, tag = "3")]
-    pub program: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetRequiredPluginsResponse {
-    /// a list of plugins required by this program.
-    #[prost(message, repeated, tag = "1")]
-    pub plugins: ::prost::alloc::vec::Vec<PluginDependency>,
-}
-/// RunRequest asks the interpreter to execute a program.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RunRequest {
-    /// the project name.
-    #[prost(string, tag = "1")]
-    pub project: ::prost::alloc::string::String,
-    /// the name of the stack being deployed into.
-    #[prost(string, tag = "2")]
-    pub stack: ::prost::alloc::string::String,
-    /// the program's working directory.
-    #[prost(string, tag = "3")]
-    pub pwd: ::prost::alloc::string::String,
-    /// the path to the program to execute.
-    #[prost(string, tag = "4")]
-    pub program: ::prost::alloc::string::String,
-    /// any arguments to pass to the program.
-    #[prost(string, repeated, tag = "5")]
-    pub args: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// the configuration variables to apply before running.
-    #[prost(map = "string, string", tag = "6")]
-    pub config: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::string::String,
-    >,
-    /// true if we're only doing a dryrun (preview).
-    #[prost(bool, tag = "7")]
-    pub dry_run: bool,
-    /// the degree of parallelism for resource operations (<=1 for serial).
-    #[prost(int32, tag = "8")]
-    pub parallel: i32,
-    /// the address for communicating back to the resource monitor.
-    #[prost(string, tag = "9")]
-    pub monitor_address: ::prost::alloc::string::String,
-    /// true if we're only doing a query.
-    #[prost(bool, tag = "10")]
-    pub query_mode: bool,
-    /// the configuration keys that have secret values.
-    #[prost(string, repeated, tag = "11")]
-    pub config_secret_keys: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// the organization of the stack being deployed into.
-    #[prost(string, tag = "12")]
-    pub organization: ::prost::alloc::string::String,
-}
-/// RunResponse is the response back from the interpreter/source back to the monitor.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RunResponse {
-    /// An unhandled error if any occurred.
-    #[prost(string, tag = "1")]
-    pub error: ::prost::alloc::string::String,
-    /// An error happened.  And it was reported to the user.  Work should stop immediately
-    /// with nothing further to print to the user.  This corresponds to a "result.Bail()"
-    /// value in the 'go' layer.
-    #[prost(bool, tag = "2")]
-    pub bail: bool,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct InstallDependenciesRequest {
-    /// the program's working directory.
-    #[prost(string, tag = "1")]
-    pub directory: ::prost::alloc::string::String,
-    /// if we are running in a terminal and should use ANSI codes
-    #[prost(bool, tag = "2")]
-    pub is_terminal: bool,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct InstallDependenciesResponse {
-    /// a line of stdout text.
-    #[prost(bytes = "vec", tag = "1")]
-    pub stdout: ::prost::alloc::vec::Vec<u8>,
-    /// a line of stderr text.
-    #[prost(bytes = "vec", tag = "2")]
-    pub stderr: ::prost::alloc::vec::Vec<u8>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RunPluginRequest {
-    /// the program's working directory.
-    #[prost(string, tag = "1")]
-    pub pwd: ::prost::alloc::string::String,
-    /// the path to the program to execute.
-    #[prost(string, tag = "2")]
-    pub program: ::prost::alloc::string::String,
-    /// any arguments to pass to the program.
-    #[prost(string, repeated, tag = "3")]
-    pub args: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// any environment variables to set as part of the program.
-    #[prost(string, repeated, tag = "4")]
-    pub env: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RunPluginResponse {
-    #[prost(oneof = "run_plugin_response::Output", tags = "1, 2, 3")]
-    pub output: ::core::option::Option<run_plugin_response::Output>,
-}
-/// Nested message and enum types in `RunPluginResponse`.
-pub mod run_plugin_response {
-    #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum Output {
-        /// a line of stdout text.
-        #[prost(bytes, tag = "1")]
-        Stdout(::prost::alloc::vec::Vec<u8>),
-        /// a line of stderr text.
-        #[prost(bytes, tag = "2")]
-        Stderr(::prost::alloc::vec::Vec<u8>),
-        /// the exit code of the provider.
-        #[prost(int32, tag = "3")]
-        Exitcode(i32),
-    }
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GenerateProgramRequest {
-    /// the PCL source of the project.
-    #[prost(map = "string, string", tag = "1")]
-    pub source: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::string::String,
-    >,
-    /// The target of a codegen.LoaderServer to use for loading schemas.
-    #[prost(string, tag = "2")]
-    pub loader_target: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GenerateProgramResponse {
-    /// any diagnostics from code generation.
-    #[prost(message, repeated, tag = "1")]
-    pub diagnostics: ::prost::alloc::vec::Vec<codegen::Diagnostic>,
-    /// the generated program source code.
-    #[prost(map = "string, bytes", tag = "2")]
-    pub source: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::vec::Vec<u8>,
-    >,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GenerateProjectRequest {
-    /// the directory to generate the project from.
-    #[prost(string, tag = "1")]
-    pub source_directory: ::prost::alloc::string::String,
-    /// the directory to generate the project in.
-    #[prost(string, tag = "2")]
-    pub target_directory: ::prost::alloc::string::String,
-    /// the JSON-encoded pulumi project file.
-    #[prost(string, tag = "3")]
-    pub project: ::prost::alloc::string::String,
-    /// if PCL binding should be strict or not.
-    #[prost(bool, tag = "4")]
-    pub strict: bool,
-    /// The target of a codegen.LoaderServer to use for loading schemas.
-    #[prost(string, tag = "5")]
-    pub loader_target: ::prost::alloc::string::String,
-    /// local dependencies to use instead of using the package system. This is a map of package name to a local
-    /// path of a language specific artifact to use for the SDK for that package.
-    #[prost(map = "string, string", tag = "6")]
-    pub local_dependencies: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::string::String,
-    >,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GenerateProjectResponse {
-    /// any diagnostics from code generation.
-    #[prost(message, repeated, tag = "1")]
-    pub diagnostics: ::prost::alloc::vec::Vec<codegen::Diagnostic>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GeneratePackageRequest {
-    /// the directory to generate the package in.
-    #[prost(string, tag = "1")]
-    pub directory: ::prost::alloc::string::String,
-    /// the JSON-encoded schema.
-    #[prost(string, tag = "2")]
-    pub schema: ::prost::alloc::string::String,
-    /// extra files to copy to the package output.
-    #[prost(map = "string, bytes", tag = "3")]
-    pub extra_files: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::vec::Vec<u8>,
-    >,
-    /// The target of a codegen.LoaderServer to use for loading schemas.
-    #[prost(string, tag = "4")]
-    pub loader_target: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GeneratePackageResponse {}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct PackRequest {
-    /// the directory of a package to pack.
-    #[prost(string, tag = "1")]
-    pub package_directory: ::prost::alloc::string::String,
-    /// the version to tag the artifact with.
-    #[prost(string, tag = "2")]
-    pub version: ::prost::alloc::string::String,
-    /// the directory to write the packed artifact to.
-    #[prost(string, tag = "3")]
-    pub destination_directory: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct PackResponse {
-    /// the full path of the packed artifact.
-    #[prost(string, tag = "1")]
-    pub artifact_path: ::prost::alloc::string::String,
-}
-/// Generated client implementations.
-pub mod language_runtime_client {
-    #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
-    use tonic::codegen::http::Uri;
-    /// LanguageRuntime is the interface that the planning monitor uses to drive execution of an interpreter responsible
-    /// for confguring and creating resource objects.
-    #[derive(Debug, Clone)]
-    pub struct LanguageRuntimeClient<T> {
-        inner: tonic::client::Grpc<T>,
-    }
-    impl LanguageRuntimeClient<tonic::transport::Channel> {
-        /// Attempt to create a new client by connecting to a given endpoint.
-        pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
-        where
-            D: TryInto<tonic::transport::Endpoint>,
-            D::Error: Into<StdError>,
-        {
-            let conn = tonic::transport::Endpoint::new(dst)?.connect().await?;
-            Ok(Self::new(conn))
-        }
-    }
-    impl<T> LanguageRuntimeClient<T>
-    where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
-        T::Error: Into<StdError>,
-        T::ResponseBody: Body<Data = Bytes> + Send + 'static,
-        <T::ResponseBody as Body>::Error: Into<StdError> + Send,
-    {
-        pub fn new(inner: T) -> Self {
-            let inner = tonic::client::Grpc::new(inner);
-            Self { inner }
-        }
-        pub fn with_origin(inner: T, origin: Uri) -> Self {
-            let inner = tonic::client::Grpc::with_origin(inner, origin);
-            Self { inner }
-        }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> LanguageRuntimeClient<InterceptedService<T, F>>
-        where
-            F: tonic::service::Interceptor,
-            T::ResponseBody: Default,
-            T: tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
-            >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
-        {
-            LanguageRuntimeClient::new(InterceptedService::new(inner, interceptor))
-        }
-        /// Compress requests with the given encoding.
-        ///
-        /// This requires the server to support it otherwise it might respond with an
-        /// error.
-        #[must_use]
-        pub fn send_compressed(mut self, encoding: CompressionEncoding) -> Self {
-            self.inner = self.inner.send_compressed(encoding);
-            self
-        }
-        /// Enable decompressing responses.
-        #[must_use]
-        pub fn accept_compressed(mut self, encoding: CompressionEncoding) -> Self {
-            self.inner = self.inner.accept_compressed(encoding);
-            self
-        }
-        /// Limits the maximum size of a decoded message.
-        ///
-        /// Default: `4MB`
-        #[must_use]
-        pub fn max_decoding_message_size(mut self, limit: usize) -> Self {
-            self.inner = self.inner.max_decoding_message_size(limit);
-            self
-        }
-        /// Limits the maximum size of an encoded message.
-        ///
-        /// Default: `usize::MAX`
-        #[must_use]
-        pub fn max_encoding_message_size(mut self, limit: usize) -> Self {
-            self.inner = self.inner.max_encoding_message_size(limit);
-            self
-        }
-        /// GetRequiredPlugins computes the complete set of anticipated plugins required by a program.
-        pub async fn get_required_plugins(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GetRequiredPluginsRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetRequiredPluginsResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/GetRequiredPlugins",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("pulumirpc.LanguageRuntime", "GetRequiredPlugins"),
-                );
-            self.inner.unary(req, path, codec).await
-        }
-        /// Run executes a program and returns its result.
-        pub async fn run(
-            &mut self,
-            request: impl tonic::IntoRequest<super::RunRequest>,
-        ) -> std::result::Result<tonic::Response<super::RunResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/Run",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.LanguageRuntime", "Run"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// GetPluginInfo returns generic information about this plugin, like its version.
-        pub async fn get_plugin_info(
-            &mut self,
-            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<tonic::Response<super::PluginInfo>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/GetPluginInfo",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.LanguageRuntime", "GetPluginInfo"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// InstallDependencies will install dependencies for the project, e.g. by running `npm install` for nodejs projects.
-        pub async fn install_dependencies(
-            &mut self,
-            request: impl tonic::IntoRequest<super::InstallDependenciesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<tonic::codec::Streaming<super::InstallDependenciesResponse>>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/InstallDependencies",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("pulumirpc.LanguageRuntime", "InstallDependencies"),
-                );
-            self.inner.server_streaming(req, path, codec).await
-        }
-        /// About returns information about the runtime for this language.
-        pub async fn about(
-            &mut self,
-            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
-        ) -> std::result::Result<tonic::Response<super::AboutResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/About",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.LanguageRuntime", "About"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// GetProgramDependencies returns the set of dependencies required by the program.
-        pub async fn get_program_dependencies(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GetProgramDependenciesRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetProgramDependenciesResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/GetProgramDependencies",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "pulumirpc.LanguageRuntime",
-                        "GetProgramDependencies",
-                    ),
-                );
-            self.inner.unary(req, path, codec).await
-        }
-        /// RunPlugin executes a plugin program and returns its result asynchronously.
-        pub async fn run_plugin(
-            &mut self,
-            request: impl tonic::IntoRequest<super::RunPluginRequest>,
-        ) -> std::result::Result<
-            tonic::Response<tonic::codec::Streaming<super::RunPluginResponse>>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/RunPlugin",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.LanguageRuntime", "RunPlugin"));
-            self.inner.server_streaming(req, path, codec).await
-        }
-        /// GenerateProgram generates a given PCL program into a program for this language.
-        pub async fn generate_program(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GenerateProgramRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GenerateProgramResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/GenerateProgram",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.LanguageRuntime", "GenerateProgram"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// GenerateProject generates a given PCL program into a project for this language.
-        pub async fn generate_project(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GenerateProjectRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GenerateProjectResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/GenerateProject",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.LanguageRuntime", "GenerateProject"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// GeneratePackage generates a given pulumi package into a package for this language.
-        pub async fn generate_package(
-            &mut self,
-            request: impl tonic::IntoRequest<super::GeneratePackageRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GeneratePackageResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/GeneratePackage",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.LanguageRuntime", "GeneratePackage"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// Pack packs a package into a language specific artifact.
-        pub async fn pack(
-            &mut self,
-            request: impl tonic::IntoRequest<super::PackRequest>,
-        ) -> std::result::Result<tonic::Response<super::PackResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.LanguageRuntime/Pack",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.LanguageRuntime", "Pack"));
-            self.inner.unary(req, path, codec).await
-        }
-    }
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ConvertStateRequest {
-    /// the gRPC target of the mapper service.
-    #[prost(string, tag = "1")]
-    pub mapper_target: ::prost::alloc::string::String,
-    /// the args passed to `pulumi import` for this conversion. Normally used to specifiy a state file to
-    /// import from.
-    #[prost(string, repeated, tag = "2")]
-    pub args: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-}
-/// A ResourceImport specifies a resource to import.
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ResourceImport {
-    /// the type token for the resource.
-    #[prost(string, tag = "1")]
-    pub r#type: ::prost::alloc::string::String,
-    /// the name of the resource.
-    #[prost(string, tag = "2")]
-    pub name: ::prost::alloc::string::String,
-    /// the ID of the resource.
-    #[prost(string, tag = "3")]
-    pub id: ::prost::alloc::string::String,
-    /// the provider version to use for the resource, if any.
-    #[prost(string, tag = "4")]
-    pub version: ::prost::alloc::string::String,
-    /// the provider PluginDownloadURL to use for the resource, if any.
-    #[prost(string, tag = "5")]
-    pub plugin_download_url: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ConvertStateResponse {
-    /// a list of resources to import.
-    #[prost(message, repeated, tag = "1")]
-    pub resources: ::prost::alloc::vec::Vec<ResourceImport>,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ConvertProgramRequest {
-    /// the source directory containing the program to convert from.
-    #[prost(string, tag = "1")]
-    pub source_directory: ::prost::alloc::string::String,
-    /// a target directory to write the resulting PCL code and project file to.
-    #[prost(string, tag = "2")]
-    pub target_directory: ::prost::alloc::string::String,
-    /// the gRPC target of the mapper service.
-    #[prost(string, tag = "3")]
-    pub mapper_target: ::prost::alloc::string::String,
-    /// The target of a codegen.LoaderServer to use for loading schemas.
-    #[prost(string, tag = "4")]
-    pub loader_target: ::prost::alloc::string::String,
-}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ConvertProgramResponse {
-    /// any diagnostics from code generation.
-    #[prost(message, repeated, tag = "1")]
-    pub diagnostics: ::prost::alloc::vec::Vec<codegen::Diagnostic>,
-}
-/// Generated client implementations.
-pub mod converter_client {
-    #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
-    use tonic::codegen::http::Uri;
-    /// Converter is a service for converting between other ecosystems and Pulumi.
-    /// This is currently unstable and experimental.
-    #[derive(Debug, Clone)]
-    pub struct ConverterClient<T> {
-        inner: tonic::client::Grpc<T>,
-    }
-    impl ConverterClient<tonic::transport::Channel> {
-        /// Attempt to create a new client by connecting to a given endpoint.
-        pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
-        where
-            D: TryInto<tonic::transport::Endpoint>,
-            D::Error: Into<StdError>,
-        {
-            let conn = tonic::transport::Endpoint::new(dst)?.connect().await?;
-            Ok(Self::new(conn))
-        }
-    }
-    impl<T> ConverterClient<T>
-    where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
-        T::Error: Into<StdError>,
-        T::ResponseBody: Body<Data = Bytes> + Send + 'static,
-        <T::ResponseBody as Body>::Error: Into<StdError> + Send,
-    {
-        pub fn new(inner: T) -> Self {
-            let inner = tonic::client::Grpc::new(inner);
-            Self { inner }
-        }
-        pub fn with_origin(inner: T, origin: Uri) -> Self {
-            let inner = tonic::client::Grpc::with_origin(inner, origin);
-            Self { inner }
-        }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> ConverterClient<InterceptedService<T, F>>
-        where
-            F: tonic::service::Interceptor,
-            T::ResponseBody: Default,
-            T: tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
-            >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
-        {
-            ConverterClient::new(InterceptedService::new(inner, interceptor))
-        }
-        /// Compress requests with the given encoding.
-        ///
-        /// This requires the server to support it otherwise it might respond with an
-        /// error.
-        #[must_use]
-        pub fn send_compressed(mut self, encoding: CompressionEncoding) -> Self {
-            self.inner = self.inner.send_compressed(encoding);
-            self
-        }
-        /// Enable decompressing responses.
-        #[must_use]
-        pub fn accept_compressed(mut self, encoding: CompressionEncoding) -> Self {
-            self.inner = self.inner.accept_compressed(encoding);
-            self
-        }
-        /// Limits the maximum size of a decoded message.
-        ///
-        /// Default: `4MB`
-        #[must_use]
-        pub fn max_decoding_message_size(mut self, limit: usize) -> Self {
-            self.inner = self.inner.max_decoding_message_size(limit);
-            self
-        }
-        /// Limits the maximum size of an encoded message.
-        ///
-        /// Default: `usize::MAX`
-        #[must_use]
-        pub fn max_encoding_message_size(mut self, limit: usize) -> Self {
-            self.inner = self.inner.max_encoding_message_size(limit);
-            self
-        }
-        /// ConvertState converts state from the target ecosystem into a form that can be imported into Pulumi.
-        pub async fn convert_state(
-            &mut self,
-            request: impl tonic::IntoRequest<super::ConvertStateRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::ConvertStateResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.Converter/ConvertState",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.Converter", "ConvertState"));
-            self.inner.unary(req, path, codec).await
-        }
-        /// ConvertProgram converts a program from the target ecosystem into a form that can be used with Pulumi.
-        pub async fn convert_program(
-            &mut self,
-            request: impl tonic::IntoRequest<super::ConvertProgramRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::ConvertProgramResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.Converter/ConvertProgram",
-            );
-            let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.Converter", "ConvertProgram"));
             self.inner.unary(req, path, codec).await
         }
     }
