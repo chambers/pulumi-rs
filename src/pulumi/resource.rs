@@ -25,10 +25,8 @@ pub struct PluginDependency {
     /// a map of the checksums for the plugin, will be empty from old language runtimes. The keys should match
     /// the os and architecture names used in pulumi releases, e.g. "darwin-amd64", "windows-arm64".
     #[prost(map = "string, bytes", tag = "5")]
-    pub checksums: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::vec::Vec<u8>,
-    >,
+    pub checksums:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::vec::Vec<u8>>,
 }
 /// PluginAttach is used to attach an already running plugin to the engine.
 ///
@@ -75,10 +73,8 @@ pub struct GetSchemaResponse {
 pub struct ConfigureRequest {
     /// a map of configuration keys to values.
     #[prost(map = "string, string", tag = "1")]
-    pub variables: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::string::String,
-    >,
+    pub variables:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
     /// the input properties for the provider. Only filled in for newer providers.
     #[prost(message, optional, tag = "2")]
     pub args: ::core::option::Option<::prost_types::Struct>,
@@ -175,10 +171,8 @@ pub struct CallRequest {
     pub plugin_download_url: ::prost::alloc::string::String,
     /// a map of checksums of the provider to use when servicing this request.
     #[prost(map = "string, bytes", tag = "16")]
-    pub plugin_checksums: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::vec::Vec<u8>,
-    >,
+    pub plugin_checksums:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::vec::Vec<u8>>,
     /// the project name.
     #[prost(string, tag = "6")]
     pub project: ::prost::alloc::string::String,
@@ -187,10 +181,8 @@ pub struct CallRequest {
     pub stack: ::prost::alloc::string::String,
     /// the configuration variables to apply before running.
     #[prost(map = "string, string", tag = "8")]
-    pub config: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::string::String,
-    >,
+    pub config:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
     /// the configuration keys that have secret values.
     #[prost(string, repeated, tag = "9")]
     pub config_secret_keys: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -318,17 +310,7 @@ pub struct PropertyDiff {
 }
 /// Nested message and enum types in `PropertyDiff`.
 pub mod property_diff {
-    #[derive(
-        Clone,
-        Copy,
-        Debug,
-        PartialEq,
-        Eq,
-        Hash,
-        PartialOrd,
-        Ord,
-        ::prost::Enumeration
-    )]
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
     #[repr(i32)]
     pub enum Kind {
         /// this property was added
@@ -411,40 +393,27 @@ pub struct DiffResponse {
     /// - root\["nested"\]
     /// - root.double.nest
     /// - root\["double"\].nest
-    /// - root["double"]["nest"]
+    /// - root\["double"\]\["nest"\]
     /// - root.array\[0\]
     /// - root.array\[100\]
     /// - root.array\[0\].nested
-    /// - root.array[0][1].nested
+    /// - root.array\[0\]\[1\].nested
     /// - root.nested.array\[0\].double\[1\]
     /// - root\["key with \"escaped\" quotes"\]
     /// - root\["key with a ."\]
     /// - \["root key with \"escaped\" quotes"\].nested
-    /// - ["root key with a ."][100]
+    /// - ["root key with a ."\]\[100\]
     ///
     /// a detailed diff appropriate for display.
     #[prost(map = "string, message", tag = "6")]
-    pub detailed_diff: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        PropertyDiff,
-    >,
+    pub detailed_diff: ::std::collections::HashMap<::prost::alloc::string::String, PropertyDiff>,
     /// true if this response contains a detailed diff.
     #[prost(bool, tag = "7")]
     pub has_detailed_diff: bool,
 }
 /// Nested message and enum types in `DiffResponse`.
 pub mod diff_response {
-    #[derive(
-        Clone,
-        Copy,
-        Debug,
-        PartialEq,
-        Eq,
-        Hash,
-        PartialOrd,
-        Ord,
-        ::prost::Enumeration
-    )]
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
     #[repr(i32)]
     pub enum DiffChanges {
         /// unknown whether there are changes or not (legacy behavior).
@@ -596,10 +565,8 @@ pub struct ConstructRequest {
     pub stack: ::prost::alloc::string::String,
     /// the configuration variables to apply before running.
     #[prost(map = "string, string", tag = "3")]
-    pub config: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::string::String,
-    >,
+    pub config:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
     /// true if we're only doing a dryrun (preview).
     #[prost(bool, tag = "4")]
     pub dry_run: bool,
@@ -629,10 +596,8 @@ pub struct ConstructRequest {
     >,
     /// the map of providers to use for this resource's children.
     #[prost(map = "string, string", tag = "13")]
-    pub providers: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::string::String,
-    >,
+    pub providers:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
     /// a list of URNs that this resource depends on, as observed by the language host.
     #[prost(string, repeated, tag = "15")]
     pub dependencies: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -653,9 +618,7 @@ pub struct ConstructRequest {
     pub aliases: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// additional output properties that should be treated as secrets.
     #[prost(string, repeated, tag = "18")]
-    pub additional_secret_outputs: ::prost::alloc::vec::Vec<
-        ::prost::alloc::string::String,
-    >,
+    pub additional_secret_outputs: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// default timeouts for CRUD operations on this resource.
     #[prost(message, optional, tag = "19")]
     pub custom_timeouts: ::core::option::Option<construct_request::CustomTimeouts>,
@@ -784,8 +747,8 @@ pub struct GetMappingResponse {
 /// Generated client implementations.
 pub mod resource_provider_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     /// ResourceProvider is a service that understands how to create, read, update, or delete resources for types defined
     /// within a single package.  It is driven by the overall planning engine in response to resource diffs.
     #[derive(Debug, Clone)]
@@ -831,9 +794,8 @@ pub mod resource_provider_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             ResourceProviderClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -872,23 +834,16 @@ pub mod resource_provider_client {
         pub async fn get_schema(
             &mut self,
             request: impl tonic::IntoRequest<super::GetSchemaRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetSchemaResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetSchemaResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/GetSchema",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/GetSchema");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "GetSchema"));
@@ -899,19 +854,15 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::CheckRequest>,
         ) -> std::result::Result<tonic::Response<super::CheckResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/CheckConfig",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/CheckConfig");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "CheckConfig"));
@@ -922,19 +873,15 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::DiffRequest>,
         ) -> std::result::Result<tonic::Response<super::DiffResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/DiffConfig",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/DiffConfig");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "DiffConfig"));
@@ -944,23 +891,16 @@ pub mod resource_provider_client {
         pub async fn configure(
             &mut self,
             request: impl tonic::IntoRequest<super::ConfigureRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::ConfigureResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::ConfigureResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Configure",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Configure");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Configure"));
@@ -971,19 +911,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::InvokeRequest>,
         ) -> std::result::Result<tonic::Response<super::InvokeResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Invoke",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Invoke");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Invoke"));
@@ -998,22 +933,20 @@ pub mod resource_provider_client {
             tonic::Response<tonic::codec::Streaming<super::InvokeResponse>>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/StreamInvoke",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/StreamInvoke");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "StreamInvoke"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "pulumirpc.ResourceProvider",
+                "StreamInvoke",
+            ));
             self.inner.server_streaming(req, path, codec).await
         }
         /// Call dynamically executes a method in the provider associated with a component resource.
@@ -1021,19 +954,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::CallRequest>,
         ) -> std::result::Result<tonic::Response<super::CallResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Call",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Call");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Call"));
@@ -1048,19 +976,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::CheckRequest>,
         ) -> std::result::Result<tonic::Response<super::CheckResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Check",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Check");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Check"));
@@ -1071,19 +994,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::DiffRequest>,
         ) -> std::result::Result<tonic::Response<super::DiffResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Diff",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Diff");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Diff"));
@@ -1095,19 +1013,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::CreateRequest>,
         ) -> std::result::Result<tonic::Response<super::CreateResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Create",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Create");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Create"));
@@ -1119,19 +1032,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ReadRequest>,
         ) -> std::result::Result<tonic::Response<super::ReadResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Read",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Read");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Read"));
@@ -1142,19 +1050,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateRequest>,
         ) -> std::result::Result<tonic::Response<super::UpdateResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Update",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Update");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Update"));
@@ -1165,19 +1068,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteRequest>,
         ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Delete",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Delete");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Delete"));
@@ -1187,23 +1085,16 @@ pub mod resource_provider_client {
         pub async fn construct(
             &mut self,
             request: impl tonic::IntoRequest<super::ConstructRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::ConstructResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::ConstructResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Construct",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Construct");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Construct"));
@@ -1218,19 +1109,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<()>,
         ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Cancel",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Cancel");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Cancel"));
@@ -1241,22 +1127,20 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<()>,
         ) -> std::result::Result<tonic::Response<super::PluginInfo>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/GetPluginInfo",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/GetPluginInfo");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "GetPluginInfo"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "pulumirpc.ResourceProvider",
+                "GetPluginInfo",
+            ));
             self.inner.unary(req, path, codec).await
         }
         /// Attach sends the engine address to an already running plugin.
@@ -1264,19 +1148,14 @@ pub mod resource_provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::PluginAttach>,
         ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/Attach",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/Attach");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "Attach"));
@@ -1287,23 +1166,17 @@ pub mod resource_provider_client {
         pub async fn get_mapping(
             &mut self,
             request: impl tonic::IntoRequest<super::GetMappingRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::GetMappingResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::GetMappingResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceProvider/GetMapping",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceProvider/GetMapping");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceProvider", "GetMapping"));
@@ -1412,9 +1285,7 @@ pub struct ReadResourceRequest {
     pub accept_secrets: bool,
     /// a list of output properties that should also be treated as secret, in addition to ones we detect.
     #[prost(string, repeated, tag = "10")]
-    pub additional_secret_outputs: ::prost::alloc::vec::Vec<
-        ::prost::alloc::string::String,
-    >,
+    pub additional_secret_outputs: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// when true operations should return resource references as strongly typed.
     #[prost(bool, tag = "12")]
     pub accept_resources: bool,
@@ -1423,10 +1294,8 @@ pub struct ReadResourceRequest {
     pub plugin_download_url: ::prost::alloc::string::String,
     /// a map of checksums of the provider to use when servicing this request.
     #[prost(map = "string, bytes", tag = "15")]
-    pub plugin_checksums: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::vec::Vec<u8>,
-    >,
+    pub plugin_checksums:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::vec::Vec<u8>>,
     /// the optional source position of the user code that initiated the read.
     #[prost(message, optional, tag = "14")]
     pub source_position: ::core::option::Option<SourcePosition>,
@@ -1490,9 +1359,7 @@ pub struct RegisterResourceRequest {
     pub accept_secrets: bool,
     /// a list of output properties that should also be treated as secret, in addition to ones we detect.
     #[prost(string, repeated, tag = "14")]
-    pub additional_secret_outputs: ::prost::alloc::vec::Vec<
-        ::prost::alloc::string::String,
-    >,
+    pub additional_secret_outputs: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// a list of additional URNs that should be considered the same.
     #[prost(string, repeated, tag = "15")]
     pub alias_ur_ns: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -1501,9 +1368,7 @@ pub struct RegisterResourceRequest {
     pub import_id: ::prost::alloc::string::String,
     /// ability to pass a custom Timeout block.
     #[prost(message, optional, tag = "17")]
-    pub custom_timeouts: ::core::option::Option<
-        register_resource_request::CustomTimeouts,
-    >,
+    pub custom_timeouts: ::core::option::Option<register_resource_request::CustomTimeouts>,
     /// true if the deleteBeforeReplace property should be treated as defined even if it is false.
     #[prost(bool, tag = "18")]
     pub delete_before_replace_defined: bool,
@@ -1518,10 +1383,8 @@ pub struct RegisterResourceRequest {
     pub accept_resources: bool,
     /// an optional reference to the provider map to manage this resource's CRUD operations.
     #[prost(map = "string, string", tag = "22")]
-    pub providers: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::string::String,
-    >,
+    pub providers:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
     /// a list of properties that if changed should force a replacement.
     #[prost(string, repeated, tag = "23")]
     pub replace_on_changes: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -1530,10 +1393,8 @@ pub struct RegisterResourceRequest {
     pub plugin_download_url: ::prost::alloc::string::String,
     /// a map of checksums expected for the provider plugin.
     #[prost(map = "string, bytes", tag = "30")]
-    pub plugin_checksums: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::vec::Vec<u8>,
-    >,
+    pub plugin_checksums:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::vec::Vec<u8>>,
     /// if true the engine will not call the resource providers delete method for this resource.
     #[prost(bool, tag = "25")]
     pub retain_on_delete: bool,
@@ -1653,10 +1514,8 @@ pub struct ResourceInvokeRequest {
     pub plugin_download_url: ::prost::alloc::string::String,
     /// a map of checksums expected for the provider plugin.
     #[prost(map = "string, bytes", tag = "8")]
-    pub plugin_checksums: ::std::collections::HashMap<
-        ::prost::alloc::string::String,
-        ::prost::alloc::vec::Vec<u8>,
-    >,
+    pub plugin_checksums:
+        ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::vec::Vec<u8>>,
     /// the optional source position of the user code that initiated the invoke.
     #[prost(message, optional, tag = "7")]
     pub source_position: ::core::option::Option<SourcePosition>,
@@ -1664,8 +1523,8 @@ pub struct ResourceInvokeRequest {
 /// Generated client implementations.
 pub mod resource_monitor_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
-    use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    use tonic::codegen::*;
     /// ResourceMonitor is the interface a source uses to talk back to the planning monitor orchestrating the execution.
     #[derive(Debug, Clone)]
     pub struct ResourceMonitorClient<T> {
@@ -1710,9 +1569,8 @@ pub mod resource_monitor_client {
                     <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
                 >,
             >,
-            <T as tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-            >>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
         {
             ResourceMonitorClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -1750,45 +1608,36 @@ pub mod resource_monitor_client {
         pub async fn supports_feature(
             &mut self,
             request: impl tonic::IntoRequest<super::SupportsFeatureRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::SupportsFeatureResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::SupportsFeatureResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceMonitor/SupportsFeature",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceMonitor/SupportsFeature");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(GrpcMethod::new("pulumirpc.ResourceMonitor", "SupportsFeature"));
+            req.extensions_mut().insert(GrpcMethod::new(
+                "pulumirpc.ResourceMonitor",
+                "SupportsFeature",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn invoke(
             &mut self,
             request: impl tonic::IntoRequest<super::ResourceInvokeRequest>,
         ) -> std::result::Result<tonic::Response<super::InvokeResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceMonitor/Invoke",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceMonitor/Invoke");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceMonitor", "Invoke"));
@@ -1801,19 +1650,15 @@ pub mod resource_monitor_client {
             tonic::Response<tonic::codec::Streaming<super::InvokeResponse>>,
             tonic::Status,
         > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceMonitor/StreamInvoke",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceMonitor/StreamInvoke");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceMonitor", "StreamInvoke"));
@@ -1823,19 +1668,14 @@ pub mod resource_monitor_client {
             &mut self,
             request: impl tonic::IntoRequest<super::CallRequest>,
         ) -> std::result::Result<tonic::Response<super::CallResponse>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceMonitor/Call",
-            );
+            let path = http::uri::PathAndQuery::from_static("/pulumirpc.ResourceMonitor/Call");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceMonitor", "Call"));
@@ -1844,23 +1684,17 @@ pub mod resource_monitor_client {
         pub async fn read_resource(
             &mut self,
             request: impl tonic::IntoRequest<super::ReadResourceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::ReadResourceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::ReadResourceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceMonitor/ReadResource",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceMonitor/ReadResource");
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("pulumirpc.ResourceMonitor", "ReadResource"));
@@ -1869,55 +1703,43 @@ pub mod resource_monitor_client {
         pub async fn register_resource(
             &mut self,
             request: impl tonic::IntoRequest<super::RegisterResourceRequest>,
-        ) -> std::result::Result<
-            tonic::Response<super::RegisterResourceResponse>,
-            tonic::Status,
-        > {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+        ) -> std::result::Result<tonic::Response<super::RegisterResourceResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/pulumirpc.ResourceMonitor/RegisterResource",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/pulumirpc.ResourceMonitor/RegisterResource");
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new("pulumirpc.ResourceMonitor", "RegisterResource"),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "pulumirpc.ResourceMonitor",
+                "RegisterResource",
+            ));
             self.inner.unary(req, path, codec).await
         }
         pub async fn register_resource_outputs(
             &mut self,
             request: impl tonic::IntoRequest<super::RegisterResourceOutputsRequest>,
         ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
-            self.inner
-                .ready()
-                .await
-                .map_err(|e| {
-                    tonic::Status::new(
-                        tonic::Code::Unknown,
-                        format!("Service was not ready: {}", e.into()),
-                    )
-                })?;
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/pulumirpc.ResourceMonitor/RegisterResourceOutputs",
             );
             let mut req = request.into_request();
-            req.extensions_mut()
-                .insert(
-                    GrpcMethod::new(
-                        "pulumirpc.ResourceMonitor",
-                        "RegisterResourceOutputs",
-                    ),
-                );
+            req.extensions_mut().insert(GrpcMethod::new(
+                "pulumirpc.ResourceMonitor",
+                "RegisterResourceOutputs",
+            ));
             self.inner.unary(req, path, codec).await
         }
     }
